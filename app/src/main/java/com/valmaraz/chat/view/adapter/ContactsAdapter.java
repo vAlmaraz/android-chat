@@ -1,8 +1,5 @@
 package com.valmaraz.chat.view.adapter;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,9 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.valmaraz.chat.R;
-import com.valmaraz.chat.view.activity.ContactDetailActivity;
-import com.valmaraz.chat.view.activity.ContactDetailFragment;
 import com.valmaraz.chat.model.entity.Contact;
+import com.valmaraz.chat.view.Navigator;
 import com.valmaraz.chat.view.viewholder.ContactViewHolder;
 
 import java.util.List;
@@ -44,26 +40,13 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactViewHolder> {
     public void onBindViewHolder(final ContactViewHolder holder, int position) {
         holder.contact = contactList.get(position);
         holder.tvName.setText(contactList.get(position).getName());
-
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (twoPane) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(ContactDetailFragment.ARG_CONTACT_ID, holder.contact.getId());
-                    arguments.putString(ContactDetailFragment.ARG_CONTACT_NAME, holder.contact.getName());
-                    ContactDetailFragment fragment = new ContactDetailFragment();
-                    fragment.setArguments(arguments);
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.contact_detail_container, fragment)
-                            .commit();
+                    Navigator.loadChat(fragmentManager, holder.contact);
                 } else {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, ContactDetailActivity.class);
-                    intent.putExtra(ContactDetailFragment.ARG_CONTACT_ID, holder.contact.getId());
-                    intent.putExtra(ContactDetailFragment.ARG_CONTACT_NAME, holder.contact.getName());
-
-                    context.startActivity(intent);
+                    Navigator.navigateToChat(v.getContext(), holder.contact);
                 }
             }
         });

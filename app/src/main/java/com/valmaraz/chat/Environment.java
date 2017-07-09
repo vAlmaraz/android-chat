@@ -19,7 +19,7 @@ public class Environment {
         switch (type) {
             case DEVELOP:
                 showLog = true;
-                socketAddress = "http://192.168.2.5";
+                socketAddress = "ws://192.168.2.5";
                 break;
             case PREPRODUCTION:
                 showLog = true;

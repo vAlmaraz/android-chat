@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Chat</string>
+    <string name="title_contact_detail">Contact Detail</string>
+    <string name="write_message">Write message</string>
+    <string name="send">Send</string>
+    <string name="write_a_message">Write a message</string>
+    <string name="connected">Connected!</string>
+    <string name="connecting">Connecting...</string>
+</resources>

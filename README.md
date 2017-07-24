@@ -1,12 +1,11 @@
 # Chat Client: Android
 
-## An Android simple chat using sockets
+## Introduction
 
 This is a proof of concept about a simple chat application in Android.
 It allows you to communicate with other apps or chat clients usign a websocket. 
-You can also download the server app [here](https://github.com/vAlmaraz/chat-socket-php).
 
-## Introduction
+___You can also download the server app [here](https://github.com/vAlmaraz/chat-socket-php).___
 
 There are five hardcoded users. First screen displays four contacts: the contact list without the current user. 
 Clicking on any of them starts a chat with that user. 
